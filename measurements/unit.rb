@@ -46,5 +46,9 @@ module Quantity
     CUP = Unit.new(VOLUME, 'cups', 8 * 1)
     PINT = Unit.new(VOLUME, 'pints', 2 * 8 * 1)
     QUART = Unit.new(VOLUME, 'quarts', 2 * 2 * 8 * 1)
+    
+    WEIGHT = Object.new
+    LB = Unit.new(WEIGHT, 'pounds', 1)
+    KG = Unit.new(WEIGHT, 'kilograms', 1/2.2046)
   end
 end

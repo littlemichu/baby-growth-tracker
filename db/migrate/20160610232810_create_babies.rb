@@ -4,6 +4,7 @@ class CreateBabies < ActiveRecord::Migration
       t.string :name
       t.integer :height
       t.integer :weight
+      t.integer :temperature
       t.timestamp :created_at
       t.timestamp :updated_at
 
