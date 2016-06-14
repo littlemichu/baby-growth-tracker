@@ -1,9 +1,12 @@
-class Baby < ActiveRecord::Base
-    #include IncompatibleMetricsError
-    include Quantity
-    #include Unit
-    attr_accessor :height_unit, :weight_unit, :temperature_unit
-    
+require './measurements/unit'
+require './measurements/quantity'
+require './measurements/incompatible_metrics_error'
+
+# Name: Bob       
+# Height: 123    [cm] [in]
+# Weight: 123    [kg] [lb]
+
+
 UNIT_MAP = {
   'CM'=> Quantity::Unit::CM,
   'INCH'=> Quantity::Unit::INCH,
@@ -13,19 +16,19 @@ UNIT_MAP = {
   'DEGREEF'=> Quantity::Unit::DEGREEF
   }
 
-def self.get_heights_from_db()
+def get_heights_from_db()
   return [3, 2, 1]
 end
 
-def self.get_heights_unit()
+def get_heights_unit()
   return "CM"
 end
 
-def self.get_weights_unit()
+def get_weights_unit()
   return "KG"
 end
 
-def self.get_temps_unit()
+def get_temps_unit()
   return "DEGREEF"
 end
 
@@ -56,7 +59,8 @@ converted_temp_arr= []
   puts converted_height_arr
   puts converted_weight_arr
   puts converted_temp_arr
-    
-    
-    
-end
+  
+
+
+
+#ten_inches = Quantity::Unit::INCH.es(10)

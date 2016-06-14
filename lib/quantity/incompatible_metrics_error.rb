@@ -1,4 +1,5 @@
-module Quantity
+
+  module Quantity
 
   # Understands that an invalid operation was attempted
   # on incompatible Unit types
@@ -10,3 +11,5 @@ module Quantity
 
   end
 end
+
+

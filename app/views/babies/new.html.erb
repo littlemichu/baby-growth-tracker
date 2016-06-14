@@ -22,16 +22,19 @@
   <p>
     <%= f.label :height %><br>
     <%= f.number_field :height %>
+    <%= f.select :height_unit, options_for_select(["cm", "in"]), :class => 'genForm_dropBox' %>
   </p>
  
   <p>
     <%= f.label :weight %><br>
     <%= f.number_field :weight %>
+    <%= f.select :weight_unit, options_for_select(["kg", "lb"]), :class => 'genForm_dropBox' %>
   </p>
   
   <p>
     <%= f.label :temperature %><br>
     <%= f.number_field :temperature %>
+    <%= f.select :temperature_unit, options_for_select(["°C", "°F"]), :class => 'genForm_dropBox' %>
   </p>
  
   <p>

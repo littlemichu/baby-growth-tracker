@@ -1,6 +1,6 @@
-require './unit'
-require './quantity'
-require './incompatible_metrics_error'
+require './measurements/unit'
+require './measurements/quantity'
+require './measurements/incompatible_metrics_error'
 
 UNIT_MAP = {
   'CM': Quantity::Unit::CM,
@@ -8,15 +8,9 @@ UNIT_MAP = {
 }
 
 #Height     Weight      Date
+#[in][cm]   [lb][kg]
 #20"     |  8        |  2016-05-01
 
-class Measurement
-
-  @height
-  @weight
-  @timestamp
-  
-end
 
 #arr = [<Measurement @height= ; @weight= >, <Measurement @height=; @weight=;>, ... ]
 
@@ -28,6 +22,7 @@ arr = [
   ["weight", 1, 2, 3]
   ]
 
+puts arr
 
 
 def convert_measurements(arr, height_unit, weight_unit)

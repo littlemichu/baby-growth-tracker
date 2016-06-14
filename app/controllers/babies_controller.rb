@@ -26,6 +26,7 @@ class BabiesController < ApplicationController
   end
 
   def create
+    puts baby_params
     @baby = Baby.new(baby_params)
     if @baby.save
       redirect_to @baby
@@ -43,6 +44,6 @@ class BabiesController < ApplicationController
   
   private
   def baby_params
-    params.require(:baby).permit(:name, :height, :weight, :temperature)
+    params.require(:baby).permit(:name, :height, :weight, :temperature, :height_unit)
   end
 end

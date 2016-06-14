@@ -1,4 +1,5 @@
-module Quantity
+
+ module Quantity
   # Understands a specific amount
   class Quantity
     attr_reader :amount, :unit
@@ -37,3 +38,6 @@ module Quantity
 
   end
 end
+
+
+
