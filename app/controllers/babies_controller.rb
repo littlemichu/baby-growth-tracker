@@ -26,7 +26,6 @@ class BabiesController < ApplicationController
   end
 
   def create
-    puts baby_params
     @baby = Baby.new(baby_params)
     if @baby.save
       redirect_to @baby
