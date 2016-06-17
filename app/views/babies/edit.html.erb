@@ -18,24 +18,24 @@
  
   <p>
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :required => true %>
   </p>
  
   <p>
     <%= f.label :height %><br>
-    <%= f.number_field :height %>
+    <%= f.number_field :height, :class => 'text_field', :step => 'any', :required => true %>
     <%= f.select :height_unit, options_for_select(["cm", "in"]), :class => 'genForm_dropBox' %>
   </p>
  
   <p>
     <%= f.label :weight %><br>
-    <%= f.number_field :weight %>
+    <%= f.number_field :weight, :class => 'text_field', :step => 'any', :required => true %>
     <%= f.select :weight_unit, options_for_select(["kg", "lb"]), :class => 'genForm_dropBox' %>
   </p>
   
   <p>
     <%= f.label :temperature %><br>
-    <%= f.number_field :temperature %>
+    <%= f.number_field :temperature, :class => 'text_field', :step => 'any', :required => true %>
     <%= f.select :temperature_unit, options_for_select(["°C", "°F"]), :class => 'genForm_dropBox' %>
   </p>
  

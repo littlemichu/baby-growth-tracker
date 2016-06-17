@@ -1,74 +1,53 @@
 
 class Baby < ActiveRecord::Base
   #include IncompatibleMetricsError
-  # include Quantity
+  include Measurement
   #include Unit
   attr_accessor :height_unit, :weight_unit, :temperature_unit
+  
+  UNIT_MAP = {
+    'cm'=> Measurement::Unit::CM,
+    'in'=> Measurement::Unit::INCH,
+    'lb'=> Measurement::Unit::LB,
+    'kg'=> Measurement::Unit::KG,
+    '°C'=> Measurement::Unit::DEGREEC,
+    '°F'=> Measurement::Unit::DEGREEF
+  }
+  
+  DEFAULT_UNIT_MAP = {
+    height: 'cm',
+    weight: 'kg',
+    temperature: '°C'
+  }
 
   def initialize(attributes = nil, options = {})
-    puts "OPTIONS: #{options}"
-    puts "ATTRIBUTES: #{attributes}"
-    if (attributes != nil and attributes.key?(:name))
-      puts "name: #{attributes[:name]}"
-      attributes[:name] = "Alice the Taiwanese!"
-    end
+    attributes = _convert_attributes(attributes)
     super(attributes, options)
   end
-    
-# UNIT_MAP = {
-#   'CM'=> Quantity::Unit::CM,
-#   'INCH'=> Quantity::Unit::INCH,
-#   'LB'=> Quantity::Unit::LB,
-#   'KG'=> Quantity::Unit::KG,
-#   'DEGREEC'=> Quantity::Unit::DEGREEC,
-#   'DEGREEF'=> Quantity::Unit::DEGREEF
-#   }
 
-# def self.get_heights_from_db()
-#   return [3, 2, 1]
-# end
-
-# def self.get_heights_unit()
-#   return "CM"
-# end
-
-# def self.get_weights_unit()
-#   return "KG"
-# end
-
-# def self.get_temps_unit()
-#   return "DEGREEF"
-# end
-
-
-# height_arr = get_heights_from_db()
-
-# height_object_arr = []
-# weight_object_arr = []
-# temp_object_arr = []
-
-# default_heights_unit = "INCH"
-# default_weights_unit = "LB"
-# default_temps_unit = "DEGREEC"
-
-# height_arr.each do |height|
-#   height_object_arr.push(UNIT_MAP[default_heights_unit].es(height))
-#   weight_object_arr.push(UNIT_MAP[default_weights_unit].es(height))
-#   temp_object_arr.push(UNIT_MAP[default_temps_unit].es(height))
-# end
-
-# puts height_arr
-
-# converted_height_arr= []
-# converted_weight_arr= []
-# converted_temp_arr= []
-#   height_object_arr.each do |height|
-#     converted_height_arr.push(UNIT_MAP[get_heights_unit()].amount_from_quantity(height))
-#     converted_weight_arr.push(UNIT_MAP[get_weights_unit()].amount_from_quantity(height))
-#     converted_temp_arr.push(UNIT_MAP[get_temps_unit()].amount_from_quantity(height))
-#   end
-#   puts converted_height_arr
-#   puts converted_weight_arr
-#   puts converted_temp_arr
+  def update(attributes)
+    attributes = _convert_attributes(attributes)
+    super(attributes)
+  end
+  
+  def _convert_attributes(attributes)
+    if attributes
+      
+      converted_attr = {}
+      
+      height_object = UNIT_MAP[attributes[:height_unit]].es(attributes[:height])
+      weight_object = UNIT_MAP[attributes[:weight_unit]].es(attributes[:weight])
+      temp_object   = UNIT_MAP[attributes[:temperature_unit]].es(attributes[:temperature])
+      
+      
+      
+      converted_attr[:height] = UNIT_MAP[get_height_unit()].amount_from_quantity(height_object)
+      converted_attr[:weight] = UNIT_MAP[get_weight_unit()].amount_from_quantity(weight_object)
+      converted_attr[:temperature] = UNIT_MAP[get_temperature_unit()].amount_from_quantity(temp_object)
+      
+      
+      return attributes.merge(converted_attr)
+    end
+  end
 
 end

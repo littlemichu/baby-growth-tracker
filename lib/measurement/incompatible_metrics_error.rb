@@ -1,5 +1,5 @@
 
-  module Quantity
+  module Measurement
 
   # Understands that an invalid operation was attempted
   # on incompatible Unit types

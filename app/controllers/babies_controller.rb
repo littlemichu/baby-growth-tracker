@@ -5,6 +5,7 @@ class BabiesController < ApplicationController
 
   def show
     @baby = Baby.find(params[:id])
+    @animals = Animal.all
   end
 
   def new
@@ -17,7 +18,6 @@ class BabiesController < ApplicationController
   
   def update
     @baby = Baby.find(params[:id])
- 
     if @baby.update(baby_params)
       redirect_to @baby
     else
@@ -43,6 +43,7 @@ class BabiesController < ApplicationController
   
   private
   def baby_params
-    params.require(:baby).permit(:name, :height, :weight, :temperature, :height_unit)
+    params.require(:baby).permit(:name, :height, :weight, :temperature, 
+                                :height_unit, :weight_unit, :temperature_unit)
   end
 end

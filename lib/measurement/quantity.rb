@@ -1,5 +1,5 @@
 
- module Quantity
+ module Measurement
   # Understands a specific amount
   class Quantity
     attr_reader :amount, :unit

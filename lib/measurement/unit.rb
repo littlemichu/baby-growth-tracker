@@ -1,5 +1,5 @@
 
-  module Quantity
+  module Measurement
   # Understands a specific metric
     class Unit
       attr_reader :base_amount, :metric_type
@@ -50,7 +50,7 @@
       
       WEIGHT = Object.new
       LB = Unit.new(WEIGHT, 'pounds', 1)
-      KG = Unit.new(WEIGHT, 'kilograms', 1/2.2046)
+      KG = Unit.new(WEIGHT, 'kilograms', 2.2046 * 1)
       
       TEMPERATURE = Object.new
       DEGREEC = Unit.new(TEMPERATURE, 'celsius', 1)

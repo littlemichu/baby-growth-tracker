@@ -17,6 +17,14 @@
   <strong>Temperature:</strong>
   <%= @baby.temperature %>
 </p>
+
+<% @animals.each do |animal| %>
+    <tr><p>
+      <td><%= animal.name %></td>
+      
+    </p</tr>
+  <% end %>
+  <p></p>
  
 <%= link_to 'Edit', edit_baby_path(@baby) %> |
 <%= link_to 'Back', babies_path %>
